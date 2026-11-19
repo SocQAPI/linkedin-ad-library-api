@@ -1,0 +1,14 @@
+{
+  "schemaVersion": 1,
+  "templateVersion": "2.0.0",
+  "kind": "platform",
+  "platform": "linkedin-ad-library",
+  "endpointCount": 2,
+  "endpoints": [
+    "linkedin-ad-library/ad",
+    "linkedin-ad-library/search"
+  ],
+  "landingPage": "https://socq.ai/apis/linkedin-ad-library",
+  "docsPage": "https://docs.socq.ai/api-manual/linkedin-ad-library/overview",
+  "generatedFrom": "SocQAPI/socq-example-template"
+}

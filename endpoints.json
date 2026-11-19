@@ -1,0 +1,141 @@
+{
+  "schemaVersion": 1,
+  "platform": "linkedin-ad-library",
+  "platformName": "LinkedIn Ad Library",
+  "baseUrl": "https://api.socq.ai",
+  "creditUsd": 0.005,
+  "endpoints": [
+    {
+      "publicId": "linkedin-ad-library/ad",
+      "name": "LinkedIn Ad Library Ad API",
+      "description": "Retrieve one public LinkedIn Ad Library record from its exact detail URL, returning normalized advertiser, creative, delivery, destination, impression, and media fields when disclosed.",
+      "method": "POST",
+      "path": "/v1/linkedin-ad-library/ad",
+      "payload": "payloads/ad.json",
+      "launchedAt": "2026-08-11",
+      "price": "0.5 credits ($0.0025) per result",
+      "billing": {
+        "baseCredits": 0,
+        "mode": "base_plus_result",
+        "resultUnitSize": 1,
+        "resultUnitCredits": 0.5,
+        "estimateResultCount": 1,
+        "estimateInputField": "url",
+        "emptyResultPolicy": "base_only"
+      },
+      "docsUrl": "https://docs.socq.ai/api-manual/linkedin-ad-library/ad",
+      "landingUrl": "https://socq.ai/apis/linkedin-ad-library/ad",
+      "required": [
+        "url"
+      ],
+      "requiredAnyOf": [],
+      "mutuallyExclusive": [],
+      "requestSchema": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "url": {
+            "type": "string",
+            "minLength": 1,
+            "description": "A public content or product URL."
+          }
+        },
+        "required": [
+          "url"
+        ]
+      }
+    },
+    {
+      "publicId": "linkedin-ad-library/search",
+      "name": "LinkedIn Ad Library Search API",
+      "description": "Search public LinkedIn ads by company, company ID, or keyword with country and date filters, returning normalized advertiser, creative, delivery, destination, impression, and media fields.",
+      "method": "POST",
+      "path": "/v1/linkedin-ad-library/search",
+      "payload": "payloads/search.json",
+      "launchedAt": "2026-08-11",
+      "price": "0.5 credits ($0.0025) per result",
+      "billing": {
+        "baseCredits": 0,
+        "mode": "base_plus_result",
+        "resultUnitSize": 1,
+        "resultUnitCredits": 0.5,
+        "estimateResultCount": 24,
+        "emptyResultPolicy": "base_only"
+      },
+      "docsUrl": "https://docs.socq.ai/api-manual/linkedin-ad-library/search",
+      "landingUrl": "https://socq.ai/apis/linkedin-ad-library/search",
+      "required": [],
+      "requiredAnyOf": [
+        [
+          "company"
+        ],
+        [
+          "company_id"
+        ],
+        [
+          "keyword"
+        ]
+      ],
+      "mutuallyExclusive": [],
+      "requestSchema": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "company": {
+            "type": "string",
+            "minLength": 1
+          },
+          "company_id": {
+            "type": "string",
+            "minLength": 1
+          },
+          "countries": {
+            "type": "array",
+            "items": {
+              "type": "string",
+              "pattern": "^[A-Za-z]{2}$"
+            },
+            "minItems": 1
+          },
+          "end_date": {
+            "type": "string",
+            "minLength": 1
+          },
+          "keyword": {
+            "type": "string",
+            "minLength": 1
+          },
+          "results_limit": {
+            "type": "integer",
+            "minimum": 24,
+            "maximum": 2000,
+            "default": 24,
+            "multipleOf": 24
+          },
+          "start_date": {
+            "type": "string",
+            "minLength": 1
+          }
+        },
+        "required": [],
+        "anyOf": [
+          {
+            "required": [
+              "company"
+            ]
+          },
+          {
+            "required": [
+              "company_id"
+            ]
+          },
+          {
+            "required": [
+              "keyword"
+            ]
+          }
+        ]
+      }
+    }
+  ]
+}
